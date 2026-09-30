@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kawuku Prints - Premium Printing & Branding Solutions</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f4ff',
+                            100: '#e0e7ff',
+                            600: '#4c1d95',
+                            700: '#3b0764',
+                            800: '#2d1b69',
+                            900: '#1e1035',
+                        },
+                        accent: {
+                            DEFAULT: '#ff6b35',
+                            hover: '#e85a26',
+                            light: '#fff0eb',
+                        },
+                        gold: '#F59E0B'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fafafa;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-dark {
+            background: rgba(45, 27, 105, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #2D1B69 0%, #FF6B35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(255, 107, 53, 0.15), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(76, 29, 149, 0.12), transparent 50%);
+        }
+
+        .animated-blob {
+            animation: float 8s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased bg-slate-50 overflow-x-hidden">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-800 to-accent flex items-center justify-center text-white font-black text-2xl shadow-md shadow-brand-800/20 group-hover:scale-105 transition-transform">
+                    K
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-brand-900 block leading-none">KAWUKU</span>
+                    <span class="text-xs font-bold tracking-widest text-accent uppercase">PRINTS</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                <a href="#home" class="hover:text-accent transition-colors">Home</a>
+                <a href="#services" class="hover:text-accent transition-colors">Services</a>
+                <a href="#calculator" class="hover:text-accent transition-colors">Instant Quote</a>
+                <a href="#portfolio" class="hover:text-accent transition-colors">Portfolio</a>
+                <a href="#about" class="hover:text-accent transition-colors">Why Us</a>
+                <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
+            </nav>
+
+            <!-- Right CTA Button -->
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="https://wa.me/256700000000?text=Hello%20Kawuku%20Prints!%20I'd%20like%20to%20get%20a%20quote." target="_blank" class="flex items-center gap-2 text-xs font-bold text-slate-700 hover:text-accent bg-slate-100 hover:bg-slate-200 px-3.5 py-2 rounded-lg transition-colors">
+                    <i data-lucide="message-circle" class="w-4 h-4 text-emerald-600"></i>
+                    WhatsApp Us
+                </a>
+                <a href="#calculator" class="bg-gradient-to-r from-brand-800 to-brand-600 hover:from-accent hover:to-accent text-white px-5 py-2.5 rounded-xl font-semibold text-sm shadow-md shadow-brand-800/20 hover:shadow-accent/30 transition-all duration-300 transform hover:-translate-y-0.5">
+                    Get a Quote
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none">
+                <i data-lucide="menu" id="menuIcon" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3">
+            <a href="#home" class="block py-2 text-base font-semibold text-slate-700 hover:text-accent border-b border-slate-100">Home</a>
+            <a href="#services" class="block py-2 text-base font-semibold text-slate-700 hover:text-accent border-b border-slate-100">Services</a>
+            <a href="#calculator" class="block py-2 text-base font-semibold text-slate-700 hover:text-accent border-b border-slate-100">Instant Quote</a>
+            <a href="#portfolio" class="block py-2 text-base font-semibold text-slate-700 hover:text-accent border-b border-slate-100">Portfolio</a>
+            <a href="#about" class="block py-2 text-base font-semibold text-slate-700 hover:text-accent border-b border-slate-100">Why Us</a>
+            <a href="#contact" class="block py-2 text-base font-semibold text-slate-700 hover:text-accent">Contact</a>
+            
+            <div class="pt-2 flex flex-col gap-2">
+                <a href="#calculator" class="w-full text-center bg-accent text-white py-3 rounded-xl font-bold shadow-md">
+                    Get an Instant Quote
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 md:pt-40 md:pb-28 hero-gradient overflow-hidden">
+        <!-- Floating background graphics -->
+        <div class="absolute top-1/4 -right-16 w-96 h-96 bg-accent/10 rounded-full filter blur-3xl animated-blob"></div>
+        <div class="absolute bottom-10 left-10 w-80 h-80 bg-brand-600/10 rounded-full filter blur-3xl animated-blob" style="animation-delay: 2s;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Content -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent font-bold text-xs uppercase tracking-wide mb-6">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        #1 Printing & Branding Partner in Uganda
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-brand-900 leading-tight tracking-tight mb-6">
+                        Bringing Your Ideas To Life With <span class="bg-gradient-to-r from-brand-800 via-brand-600 to-accent bg-clip-text text-transparent">Premium Print & Branding</span>
+                    </h1>
+                    
+                    <p class="text-lg text-slate-600 font-normal mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        From high-volume offset printing and custom apparel embroidery to large format signage & corporate merchandise. We deliver unmatched color precision and ultra-fast turnaround times.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#calculator" class="w-full sm:w-auto px-8 py-4 bg-accent hover:bg-accent-hover text-white font-bold rounded-xl shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/40 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                            <i data-lucide="calculator" class="w-5 h-5"></i>
+                            Calculate Instant Quote
+                        </a>
+                        <a href="#services" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-slate-50 text-brand-900 border border-slate-200 font-bold rounded-xl shadow-sm hover:border-brand-600 transition-all flex items-center justify-center gap-2">
+                            Explore Services
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="mt-12 pt-8 border-t border-slate-200/80 grid grid-cols-3 gap-4 text-center lg:text-left">
+                        <div>
+                            <p class="text-2xl font-extrabold text-brand-900">5,000+</p>
+                            <p class="text-xs text-slate-500 font-medium">Projects Delivered</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-extrabold text-brand-900">24-48 hr</p>
+                            <p class="text-xs text-slate-500 font-medium">Fast Turnaround</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-extrabold text-brand-900">99.8%</p>
+                            <p class="text-xs text-slate-500 font-medium">Satisfied Clients</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Interactive Mockup Cards Showcase -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative w-full max-w-lg mx-auto">
+                        <!-- Main Preview Card -->
+                        <div class="bg-gradient-to-br from-brand-900 to-brand-800 rounded-3xl p-6 text-white shadow-2xl relative overflow-hidden transform hover:scale-[1.02] transition-transform duration-500 border border-brand-700">
+                            <!-- Background pattern overlay -->
+                            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                            
+                            <div class="flex justify-between items-start mb-8 relative z-10">
+                                <div>
+                                    <span class="text-xs font-mono bg-accent/20 text-accent border border-accent/30 px-2.5 py-1 rounded-full uppercase tracking-wider font-semibold">HD Offset Print</span>
+                                    <h3 class="text-xl font-bold mt-2">Brand Identity Package</h3>
+                                </div>
+                                <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                                    <i data-lucide="printer" class="w-5 h-5 text-accent"></i>
+                                </div>
+                            </div>
+
+                            <!-- Showcase Elements Grid -->
+                            <div class="grid grid-cols-2 gap-3 relative z-10 mb-6">
+                                <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-2xl border border-white/10">
+                                    <i data-lucide="shirt" class="w-6 h-6 text-amber-400 mb-2"></i>
+                                    <p class="text-xs font-semibold">Custom Apparel</p>
+                                    <p class="text-[10px] text-slate-300">Embroidery & Screen</p>
+                                </div>
+                                <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-2xl border border-white/10">
+                                    <i data-lucide="panel-top" class="w-6 h-6 text-emerald-400 mb-2"></i>
+                                    <p class="text-xs font-semibold">Signage & Banners</p>
+                                    <p class="text-[10px] text-slate-300">3D Illuminated</p>
+                                </div>
+                                <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-2xl border border-white/10">
+                                    <i data-lucide="file-text" class="w-6 h-6 text-sky-400 mb-2"></i>
+                                    <p class="text-xs font-semibold">Flyers & Cards</p>
+                                    <p class="text-[10px] text-slate-300">GSM Quality Paper</p>
+                                </div>
+                                <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-2xl border border-white/10">
+                                    <i data-lucide="gift" class="w-6 h-6 text-accent mb-2"></i>
+                                    <p class="text-xs font-semibold">Corporate Gifts</p>
+                                    <p class="text-[10px] text-slate-300">Mugs, Pens, Lanyards</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between text-xs pt-4 border-t border-white/10 relative z-10">
+                                <span class="text-slate-300 flex items-center gap-1">
+                                    <i data-lucide="check-circle2" class="w-3.5 h-3.5 text-emerald-400"></i> Vivid Pantone Accuracy
+                                </span>
+                                <span class="text-slate-300 flex items-center gap-1">
+                                    <i data-lucide="truck" class="w-3.5 h-3.5 text-accent"></i> Fast Delivery
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Floating Pill 1 -->
+                        <div class="absolute -top-6 -left-6 bg-white p-3.5 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-100 animate-bounce" style="animation-duration: 4s;">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-800">100% Quality Guarantee</p>
+                                <p class="text-[10px] text-slate-500">Eco-Friendly Inks</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge 2 -->
+                        <div class="absolute -bottom-6 -right-4 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-100">
+                            <div class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
+                                <i data-lucide="zap" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-800">Express Printing</p>
+                                <p class="text-[10px] text-slate-500">Same-Day Pickup Available</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-accent font-bold text-xs uppercase tracking-widest bg-accent/10 px-3 py-1 rounded-full">Our Core Offerings</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-900 mt-3 mb-4">Complete Printing & Branding Solutions</h2>
+                <p class="text-slate-600 text-base">We combine modern machinery with artisanal craftsmanship to deliver standout visual products for businesses, events, and individuals.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service 1: Digital & Offset -->
+                <div class="group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-brand-600/30 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-brand-800 text-white flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-accent transition-all">
+                            <i data-lucide="printer" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-900 mb-3">Digital & Offset Printing</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">High-resolution print production for business cards, flyers, brochures, letterheads, flyers, catalogs, and event programs.</p>
+                        <ul class="space-y-2 text-xs text-slate-700 font-medium mb-6">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Business Cards (Gloss / Matte / Velvet)</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Flyers, Posters & Tri-fold Brochures</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Magazines & Annual Reports</li>
+                        </ul>
+                    </div>
+                    <a href="#calculator" onclick="selectServiceInCalc('print')" class="text-xs font-bold text-brand-800 group-hover:text-accent flex items-center gap-1.5 transition-colors">
+                        Get Estimate <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2: Apparel & Embroidery -->
+                <div class="group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-brand-600/30 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-brand-800 text-white flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-accent transition-all">
+                            <i data-lucide="shirt" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-900 mb-3">Apparel & Embroidery</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">Custom screen printing, heat press, DTF, and computer embroidery for corporate apparel and team uniforms.</p>
+                        <ul class="space-y-2 text-xs text-slate-700 font-medium mb-6">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Branded T-Shirts & Polo Shirts</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Hoodies, Jackets & Caps</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Staff Overalls & School Uniforms</li>
+                        </ul>
+                    </div>
+                    <a href="#calculator" onclick="selectServiceInCalc('apparel')" class="text-xs font-bold text-brand-800 group-hover:text-accent flex items-center gap-1.5 transition-colors">
+                        Get Estimate <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3: Large Format & Signage -->
+                <div class="group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-brand-600/30 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-brand-800 text-white flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-accent transition-all">
+                            <i data-lucide="panel-top" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-900 mb-3">Large Format & Signage</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">Durable indoor and outdoor signage, weather-resistant vinyl stickers, tear-drop banners, and 3D illuminated letters.</p>
+                        <ul class="space-y-2 text-xs text-slate-700 font-medium mb-6">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Roll-up Banners & PVC Banners</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Vehicle Branding & Wall Murals</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> 3D Acrylic & LED Shop Signage</li>
+                        </ul>
+                    </div>
+                    <a href="#calculator" onclick="selectServiceInCalc('signage')" class="text-xs font-bold text-brand-800 group-hover:text-accent flex items-center gap-1.5 transition-colors">
+                        Get Estimate <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service 4: Corporate Merchandise -->
+                <div class="group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-brand-600/30 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-brand-800 text-white flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-accent transition-all">
+                            <i data-lucide="gift" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-900 mb-3">Corporate Branding & Gifts</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">Engraved and printed corporate merchandise designed to elevate your brand presence during expos and promotions.</p>
+                        <ul class="space-y-2 text-xs text-slate-700 font-medium mb-6">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Custom Notebooks, Diarised Planners</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Ceramic Mugs, Water Bottles, Flash Drives</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Lanyards, ID Badges & Executive Pens</li>
+                        </ul>
+                    </div>
+                    <a href="#calculator" onclick="selectServiceInCalc('gifts')" class="text-xs font-bold text-brand-800 group-hover:text-accent flex items-center gap-1.5 transition-colors">
+                        Get Estimate <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service 5: Graphic Design -->
+                <div class="group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-brand-600/30 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-brand-800 text-white flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-accent transition-all">
+                            <i data-lucide="palette" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-900 mb-3">Graphic Design & Artwork</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">Professional layout creation, brand guidelines design, logo design, and artwork prepress prep for print perfection.</p>
+                        <ul class="space-y-2 text-xs text-slate-700 font-medium mb-6">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Logo & Corporate Identity Design</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Vectorization & Prepress Formatting</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Marketing Mockups & Concepts</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="text-xs font-bold text-brand-800 group-hover:text-accent flex items-center gap-1.5 transition-colors">
+                        Speak with Designer <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service 6: Express Custom Order -->
+                <div class="bg-gradient-to-br from-brand-900 to-brand-800 rounded-2xl p-8 text-white flex flex-col justify-between shadow-lg relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-accent/20 rounded-full blur-2xl"></div>
+                    <div>
+                        <span class="text-[11px] font-mono uppercase bg-accent text-white px-2.5 py-1 rounded-full font-bold">Custom Requirement?</span>
+                        <h3 class="text-2xl font-black mt-4 mb-3">Have a Large or Unique Order?</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">We handle bulk corporate tenders, custom packaging solutions, and tight deadlines with special discount structures.</p>
+                    </div>
+                    <a href="https://wa.me/256700000000?text=Hello!%20I%20have%20a%20custom%20bulk%20print%20order." target="_blank" class="w-full bg-accent hover:bg-accent-hover text-white text-center font-bold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="phone-call" class="w-4 h-4"></i>
+                        Direct WhatsApp Inquiry
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Instant Quote Calculator Section -->
+    <section id="calculator" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-accent font-bold text-xs uppercase tracking-widest bg-accent/20 border border-accent/30 px-3 py-1 rounded-full">Transparent Pricing</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 mb-3">Instant Quote Estimator</h2>
+                <p class="text-slate-400 text-sm">Select your printing options below to calculate an estimated price instantly in UGX / USD.</p>
+            </div>
+
+            <div class="bg-slate-800/80 rounded-3xl p-6 sm:p-10 border border-slate-700 backdrop-blur-xl shadow-2xl max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    
+                    <!-- Controls Form -->
+                    <div class="space-y-5">
+                        
+                        <!-- Print Category Select -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">1. Select Product Category</label>
+                            <select id="calcCategory" onchange="updateCalcOptions()" class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-accent">
+                                <option value="business_cards">Business Cards</option>
+                                <option value="flyers">Flyers / Handbills (A5)</option>
+                                <option value="tshirts">Branded T-Shirts / Polos</option>
+                                <option value="banners">Roll-Up Banners (Standard)</option>
+                                <option value="mugs">Custom Branded Mugs</option>
+                            </select>
+                        </div>
+
+                        <!-- Quantity Range Slider -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-xs font-bold text-slate-300 uppercase tracking-wider">2. Quantity</label>
+                                <span id="calcQtyDisplay" class="text-accent font-extrabold text-sm bg-accent/10 px-2.5 py-0.5 rounded-md border border-accent/20">100 Pcs</span>
+                            </div>
+                            <input type="range" id="calcQty" min="10" max="2000" step="10" value="100" oninput="calculateQuote()" class="w-full accent-accent bg-slate-700 rounded-lg cursor-pointer h-2">
+                            <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+                                <span>10 pcs</span>
+                                <span>500 pcs</span>
+                                <span>2000+ pcs</span>
+                            </div>
+                        </div>
+
+                        <!-- Material Quality Option -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">3. Material / Paper Specs</label>
+                            <select id="calcMaterial" onchange="calculateQuote()" class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-accent">
+                                <!-- Populated dynamically by JS -->
+                            </select>
+                        </div>
+
+                        <!-- Finishing Options -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">4. Finishing Type</label>
+                            <div class="grid grid-cols-2 gap-3" id="calcFinishingContainer">
+                                <!-- Dynamic check options -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Calculated Total Box -->
+                    <div class="bg-gradient-to-br from-brand-900 to-slate-900 rounded-2xl p-6 border border-brand-700/50 flex flex-col justify-between text-center relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-xl"></div>
+                        
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase tracking-widest font-semibold">Estimated Total Cost</span>
+                            <div class="mt-4 mb-2">
+                                <span class="text-4xl sm:text-5xl font-black text-white" id="calcTotalPrice">UGX 85,000</span>
+                            </div>
+                            <p class="text-xs text-emerald-400 font-medium flex items-center justify-center gap-1 mb-4">
+                                <i data-lucide="tag" class="w-3.5 h-3.5"></i> Includes Bulk Discount (<span id="discountPercent">10%</span>)
+                            </p>
+                            
+                            <div class="bg-slate-900/80 rounded-xl p-3 text-left space-y-1.5 text-xs text-slate-300 border border-slate-800">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Unit Price:</span>
+                                    <span id="calcUnitPrice" class="font-bold">UGX 850 / pc</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Estimated Turnaround:</span>
+                                    <span id="calcTurnaround" class="font-bold text-amber-400">24-48 Hours</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 space-y-3">
+                            <button onclick="openOrderModal()" class="w-full bg-accent hover:bg-accent-hover text-white font-bold py-3.5 rounded-xl shadow-lg shadow-accent/25 transition-all flex items-center justify-center gap-2 text-sm">
+                                <i data-lucide="send" class="w-4 h-4"></i> Submit This Order Request
+                            </button>
+                            <p class="text-[11px] text-slate-400">Prices are estimates. Final quote sent upon artwork review.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Portfolio Gallery Section -->
+    <section id="portfolio" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-accent font-bold text-xs uppercase tracking-widest bg-accent/10 px-3 py-1 rounded-full">Our Recent Work</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-900 mt-3">Portfolio & Print Showcases</h2>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="mt-6 md:mt-0 flex flex-wrap gap-2" id="portfolioFilter">
+                    <button onclick="filterPortfolio('all')" class="port-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-brand-800 text-white shadow-md">All Works</button>
+                    <button onclick="filterPortfolio('apparel')" class="port-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-600 hover:bg-slate-200">Apparel</button>
+                    <button onclick="filterPortfolio('signage')" class="port-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-600 hover:bg-slate-200">Signage</button>
+                    <button onclick="filterPortfolio('print')" class="port-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-600 hover:bg-slate-200">Digital Print</button>
+                    <button onclick="filterPortfolio('gifts')" class="port-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-600 hover:bg-slate-200">Gifts</button>
+                </div>
+            </div>
+
+            <!-- Grid Items -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioGrid">
+                
+                <!-- Item 1 -->
+                <div class="portfolio-item apparel bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200/80 group">
+                    <div class="relative h-60 bg-slate-100 overflow-hidden flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80" alt="Branded Corporate T-Shirts" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <span class="absolute top-3 left-3 bg-brand-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full">Apparel</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-brand-900 text-lg mb-1">Corporate Embroidery & Tees</h4>
+                        <p class="text-xs text-slate-500">Premium heavy-cotton polo shirts for tech company staff.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="portfolio-item signage bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200/80 group">
+                    <div class="relative h-60 bg-slate-100 overflow-hidden flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80" alt="3D Shop Front Signage" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <span class="absolute top-3 left-3 bg-brand-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full">Signage</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-brand-900 text-lg mb-1">3D Acrylic LED Shop Sign</h4>
+                        <p class="text-xs text-slate-500">Weatherproof outdoor illuminated logo sign for retail storefront.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="portfolio-item print bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200/80 group">
+                    <div class="relative h-60 bg-slate-100 overflow-hidden flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80" alt="Executive Business Cards" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <span class="absolute top-3 left-3 bg-brand-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full">Digital Print</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-brand-900 text-lg mb-1">Velvet Soft-Touch Business Cards</h4>
+                        <p class="text-[11px] text-slate-500">400gsm card stock with gold spot UV foil finish.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="portfolio-item gifts bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200/80 group">
+                    <div class="relative h-60 bg-slate-100 overflow-hidden flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=800&q=80" alt="Branded Drinkware" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <span class="absolute top-3 left-3 bg-brand-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full">Gifts</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-brand-900 text-lg mb-1">Custom Ceramic & Thermal Mugs</h4>
+                        <p class="text-xs text-slate-500">Laser-engraved executive water bottles & sublimation mugs.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="portfolio-item signage bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200/80 group">
+                    <div class="relative h-60 bg-slate-100 overflow-hidden flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80" alt="Roll-up Banner Design" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <span class="absolute top-3 left-3 bg-brand-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full">Signage</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-brand-900 text-lg mb-1">Event Roll-Up Banners</h4>
+                        <p class="text-xs text-slate-500">High-resolution anti-curl banner fabric with heavy duty aluminum stand.</p>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="portfolio-item print bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200/80 group">
+                    <div class="relative h-60 bg-slate-100 overflow-hidden flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80" alt="Brochures and Catalogs" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <span class="absolute top-3 left-3 bg-brand-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full">Digital Print</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-brand-900 text-lg mb-1">Annual Corporate Reports</h4>
+                        <p class="text-xs text-slate-500">Saddle-stitched glossy catalog printing for NGOs & Firms.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us / Features -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <div>
+                    <span class="text-accent font-bold text-xs uppercase tracking-widest bg-accent/10 px-3 py-1 rounded-full">Why Kawuku Prints</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-900 mt-3 mb-6">Engineered for Quality, Built for Speed</h2>
+                    <p class="text-slate-600 leading-relaxed mb-8">
+                        At Kawuku Prints, we merge cutting-edge print machinery with high-grade inks and substrates. Whether you are launching a startup, branding an international conference, or scaling your corporate presence, we ensure your brand looks exceptional.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center shrink-0">
+                                <i data-lucide="zap" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-900 text-base mb-1">Rapid Express Turnaround</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed">Same-day and 24-hour turnaround options available for urgent trade shows & marketing launches.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center shrink-0">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-900 text-base mb-1">Pantone Color Precision</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed">State-of-the-art color calibration guarantees your corporate logo colors match 100% across all materials.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                                <i data-lucide="leaf" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-900 text-base mb-1">Eco-Friendly & Non-Toxic Inks</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed">We utilize eco-solvent inks and sustainably sourced paper stock to minimize environmental impact.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Image Box -->
+                <div class="relative">
+                    <div class="bg-gradient-to-tr from-brand-900 to-brand-700 rounded-3xl p-8 text-white relative shadow-2xl overflow-hidden">
+                        <div class="absolute -top-10 -right-10 w-48 h-48 bg-accent/30 rounded-full filter blur-2xl"></div>
+                        
+                        <h3 class="text-2xl font-bold mb-4">Our Print Guarantee</h3>
+                        <p class="text-slate-300 text-sm mb-6 leading-relaxed">If your print job contains any manufacturing defects or color discrepancies from approved proofs, we reprint it free of charge.</p>
+
+                        <!-- Stats Box Grid -->
+                        <div class="grid grid-cols-2 gap-4 pt-6 border-t border-white/10">
+                            <div class="bg-white/10 p-4 rounded-xl border border-white/10">
+                                <span class="text-3xl font-extrabold text-accent">10M+</span>
+                                <p class="text-xs text-slate-300 mt-1">Impressions Printed</p>
+                            </div>
+                            <div class="bg-white/10 p-4 rounded-xl border border-white/10">
+                                <span class="text-3xl font-extrabold text-accent">100%</span>
+                                <p class="text-xs text-slate-300 mt-1">Satisfaction Rate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-slate-50 border-t border-b border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-accent font-bold text-xs uppercase tracking-widest bg-accent/10 px-3 py-1 rounded-full">Client Reviews</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-900 mt-3">Trusted by Businesses Across East Africa</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 gap-1 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic mb-6">"Kawuku Prints printed our corporate event pull-up banners and 500 branded gift bags on extremely tight notice. Quality was unmatched!"</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                        <div class="w-10 h-10 rounded-full bg-brand-800 text-white flex items-center justify-center font-bold text-sm">
+                            MN
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold text-brand-900">Michael Nabeta</h5>
+                            <p class="text-[10px] text-slate-500">Marketing Director, TechPulse</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 gap-1 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic mb-6">"The embroidery quality on our staff polos and jackets is super sharp. After multiple washes, colors still look brand new."</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                        <div class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-bold text-sm">
+                            SK
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold text-brand-900">Sarah Kaggwa</h5>
+                            <p class="text-[10px] text-slate-500">HR Lead, Apex Solutions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 gap-1 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic mb-6">"Their online quote calculator was fast and accurate. Ordered 1,000 spot UV business cards and they delivered straight to our office."</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                        <div class="w-10 h-10 rounded-full bg-brand-600 text-white flex items-center justify-center font-bold text-sm">
+                            DA
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold text-brand-900">David Akello</h5>
+                            <p class="text-[10px] text-slate-500">Founder, Akello Creative</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Map Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Info Left -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="text-accent font-bold text-xs uppercase tracking-widest bg-accent/10 px-3 py-1 rounded-full">Get In Touch</span>
+                        <h2 class="text-3xl font-extrabold text-brand-900 mt-3 mb-4">Let's Discuss Your Next Print Project</h2>
+                        <p class="text-slate-600 text-sm">Visit our main workshop or send us a message. Our print specialists respond within 15 minutes.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                            <div class="w-10 h-10 rounded-lg bg-brand-800 text-white flex items-center justify-center shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-xs font-bold text-brand-900 uppercase tracking-wider">Workshop Location</h5>
+                                <p class="text-sm text-slate-600">Kawuku Entebbe Road, Kampala / Wakiso, Uganda</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-xs font-bold text-brand-900 uppercase tracking-wider">Call / WhatsApp</h5>
+                                <p class="text-sm text-slate-600">+256 700 000 000 / +256 770 000 000</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                            <div class="w-10 h-10 rounded-lg bg-accent text-white flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-xs font-bold text-brand-900 uppercase tracking-wider">Email Us</h5>
+                                <p class="text-sm text-slate-600">info@kawukuprints.com / sales@kawukuprints.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                            <div class="w-10 h-10 rounded-lg bg-amber-500 text-white flex items-center justify-center shrink-0">
+                                <i data-lucide="clock" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-xs font-bold text-brand-900 uppercase tracking-wider">Working Hours</h5>
+                                <p class="text-sm text-slate-600">Monday – Saturday: 8:00 AM – 6:30 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Right -->
+                <div class="lg:col-span-7 bg-slate-50 p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+                    <h3 class="text-xl font-bold text-brand-900 mb-6">Send Us a Direct Message</h3>
+                    
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Your Full Name</label>
+                                <input type="text" required placeholder="John Doe" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-600">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Phone Number / WhatsApp</label>
+                                <input type="tel" required placeholder="+256 700 000 000" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-600">
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Email Address</label>
+                                <input type="email" required placeholder="john@example.com" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-600">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Service Required</label>
+                                <select class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-600">
+                                    <option>Digital & Offset Printing</option>
+                                    <option>Custom Apparel / T-Shirts</option>
+                                    <option>Large Format Signage</option>
+                                    <option>Corporate Gifts</option>
+                                    <option>Other / Graphic Design</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Project Details & Quantities</label>
+                            <textarea rows="4" required placeholder="Describe your print specifications, size, quantity..." class="w-full bg-white border border-slate-200 rounded-xl p-4 text-sm focus:outline-none focus:border-brand-600"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-800 hover:bg-brand-900 text-white font-bold py-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm">
+                            <i data-lucide="send" class="w-4 h-4"></i> Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-900 text-white pt-16 pb-8 border-t border-brand-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+                
+                <div class="col-span-2">
+                    <a href="#" class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center text-white font-black text-xl">
+                            K
+                        </div>
+                        <span class="text-xl font-extrabold tracking-tight text-white">KAWUKU PRINTS</span>
+                    </a>
+                    <p class="text-slate-400 text-xs leading-relaxed max-w-sm mb-6">
+                        Uganda's premier destination for high-definition commercial printing, large format signage, apparel embroidery, and corporate merchandise.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-9 h-9 rounded-lg bg-brand-800 hover:bg-accent flex items-center justify-center text-white transition-colors">
+                            <i data-lucide="facebook" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-brand-800 hover:bg-accent flex items-center justify-center text-white transition-colors">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-brand-800 hover:bg-accent flex items-center justify-center text-white transition-colors">
+                            <i data-lucide="twitter" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="text-xs font-bold text-accent uppercase tracking-wider mb-4">Quick Links</h5>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#calculator" class="hover:text-white transition-colors">Instant Quote</a></li>
+                        <li><a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-xs font-bold text-accent uppercase tracking-wider mb-4">Services</h5>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li><a href="#services" class="hover:text-white transition-colors">Business Cards</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Apparel & Embroidery</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Banners & Signage</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Corporate Gifts</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-xs font-bold text-accent uppercase tracking-wider mb-4">Legal</h5>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Print Artwork Policy</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-brand-800/60 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-4">
+                <p>&copy; <span id="year"></span> Kawuku Prints. All rights reserved.</p>
+                <p class="flex items-center gap-1">Crafted with precision in Uganda <i data-lucide="heart" class="w-3.5 h-3.5 text-accent fill-accent"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Order Submission Modal -->
+    <div id="orderModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl animate-fade-in">
+            <button onclick="closeOrderModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-accent/10 text-accent rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="check-circle" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-xl font-extrabold text-brand-900">Confirm Estimated Order</h3>
+                <p class="text-xs text-slate-500 mt-1">Submit this summary to receive an official artwork proof and payment link.</p>
+            </div>
+
+            <div class="bg-slate-50 rounded-2xl p-4 mb-6 text-xs space-y-2 border border-slate-200">
+                <div class="flex justify-between"><span class="text-slate-500">Item:</span><span id="modalProduct" class="font-bold text-brand-900">Business Cards</span></div>
+                <div class="flex justify-between"><span class="text-slate-500">Quantity:</span><span id="modalQty" class="font-bold text-brand-900">100 Pcs</span></div>
+                <div class="flex justify-between"><span class="text-slate-500">Material:</span><span id="modalMaterial" class="font-bold text-brand-900">Standard GSM</span></div>
+                <div class="flex justify-between pt-2 border-t border-slate-200 text-sm font-extrabold"><span class="text-slate-700">Estimated Price:</span><span id="modalPrice" class="text-accent">UGX 85,000</span></div>
+            </div>
+
+            <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Name</label>
+                    <input type="text" required placeholder="Full Name" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number (WhatsApp)</label>
+                    <input type="tel" required placeholder="+256 7..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm">
+                </div>
+                <button type="submit" class="w-full bg-accent hover:bg-accent-hover text-white font-bold py-3.5 rounded-xl shadow-lg transition-all text-sm">
+                    Confirm & Send Order Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-brand-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-brand-700 flex items-center gap-3 transform translate-y-24 opacity-0 transition-all duration-300 z-50">
+        <i data-lucide="check-circle2" class="w-5 h-5 text-emerald-400"></i>
+        <span id="toastMsg" class="text-xs font-semibold">Message sent successfully!</span>
+    </div>
+
+    <!-- Application Logic Script -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Price Estimator Logic Data
+        const pricingData = {
+            business_cards: {
+                basePrice: 850,
+                materials: [
+                    { name: '350 GSM Matte Card', factor: 1.0 },
+                    { name: '400 GSM Soft-Touch Velvet', factor: 1.3 },
+                    { name: 'Textured Linen Card', factor: 1.4 }
+                ],
+                finishings: [
+                    { name: 'Rounded Corners', cost: 50 },
+                    { name: 'Spot UV / Gold Foil', cost: 150 }
+                ]
+            },
+            flyers: {
+                basePrice: 400,
+                materials: [
+                    { name: '150 GSM Gloss Art Paper', factor: 1.0 },
+                    { name: '250 GSM Heavy Card Stock', factor: 1.35 }
+                ],
+                finishings: [
+                    { name: 'Double-Sided Print', cost: 150 },
+                    { name: 'Gloss Lamination', cost: 100 }
+                ]
+            },
+            tshirts: {
+                basePrice: 28000,
+                materials: [
+                    { name: '100% Cotton Heavyweight (180 GSM)', factor: 1.0 },
+                    { name: 'Premium Polyester Sports Dry-Fit', factor: 0.9 },
+                    { name: 'Pique Cotton Polo Shirt', factor: 1.35 }
+                ],
+                finishings: [
+                    { name: 'Embroidery Logo (Chest)', cost: 4000 },
+                    { name: 'Back Full Print (DTF)', cost: 5000 }
+                ]
+            },
+            banners: {
+                basePrice: 120000,
+                materials: [
+                    { name: 'Standard Aluminum Base (85x200cm)', factor: 1.0 },
+                    { name: 'Heavy Duty Luxury Base (85x200cm)', factor: 1.3 }
+                ],
+                finishings: [
+                    { name: 'Carrying Bag Included', cost: 0 },
+                    { name: 'Anti-Glare Matte Film', cost: 15000 }
+                ]
+            },
+            mugs: {
+                basePrice: 15000,
+                materials: [
+                    { name: 'White Ceramic 11oz Mug', factor: 1.0 },
+                    { name: 'Magic Color Changing Mug', factor: 1.4 },
+                    { name: 'Stainless Steel Travel Flask', factor: 2.2 }
+                ],
+                finishings: [
+                    { name: 'Individual Gift Box Packaging', cost: 1500 }
+                ]
+            }
+        };
+
+        function updateCalcOptions() {
+            const catKey = document.getElementById('calcCategory').value;
+            const data = pricingData[catKey];
+            const matSelect = document.getElementById('calcMaterial');
+            const finishContainer = document.getElementById('calcFinishingContainer');
+
+            // Populate Materials
+            matSelect.innerHTML = data.materials.map((m, idx) => `<option value="${idx}">${m.name}</option>`).join('');
+
+            // Populate Finishings
+            finishContainer.innerHTML = data.finishings.map((f, idx) => `
+                <label class="flex items-center gap-2 bg-slate-900 border border-slate-700 p-2.5 rounded-xl cursor-pointer hover:border-slate-500">
+                    <input type="checkbox" value="${f.cost}" class="calc-finish-check accent-accent w-4 h-4" onchange="calculateQuote()">
+                    <span class="text-xs text-slate-300 font-medium">${f.name}</span>
+                </label>
+            `).join('');
+
+            calculateQuote();
+        }
+
+        function calculateQuote() {
+            const catKey = document.getElementById('calcCategory').value;
+            const data = pricingData[catKey];
+            const qty = parseInt(document.getElementById('calcQty').value);
+            const matIdx = parseInt(document.getElementById('calcMaterial').value) || 0;
+
+            document.getElementById('calcQtyDisplay').textContent = `${qty} Pcs`;
+
+            const selectedMaterial = data.materials[matIdx];
+            let baseUnitPrice = data.basePrice * (selectedMaterial ? selectedMaterial.factor : 1);
+
+            // Add finishings costs
+            const checkboxes = document.querySelectorAll('.calc-finish-check:checked');
+            let finishTotalPerUnit = 0;
+            checkboxes.forEach(cb => {
+                finishTotalPerUnit += parseFloat(cb.value);
+            });
+
+            let unitPrice = baseUnitPrice + finishTotalPerUnit;
+
+            // Bulk discount calculation
+            let discount = 0;
+            if (qty >= 500) discount = 0.15;
+            else if (qty >= 200) discount = 0.10;
+            else if (qty >= 100) discount = 0.05;
+
+            document.getElementById('discountPercent').textContent = `${Math.round(discount * 100)}%`;
+
+            let totalPrice = Math.round((unitPrice * qty) * (1 - discount));
+            let calculatedUnit = Math.round(totalPrice / qty);
+
+            document.getElementById('calcTotalPrice').textContent = `UGX ${totalPrice.toLocaleString()}`;
+            document.getElementById('calcUnitPrice').textContent = `UGX ${calculatedUnit.toLocaleString()} / pc`;
+
+            // Adjust estimated turnaround time based on volume
+            if (qty > 1000) {
+                document.getElementById('calcTurnaround').textContent = '3-5 Business Days';
+            } else if (qty > 300) {
+                document.getElementById('calcTurnaround').textContent = '48 Hours';
+            } else {
+                document.getElementById('calcTurnaround').textContent = '24-48 Hours';
+            }
+        }
+
+        function selectServiceInCalc(serviceType) {
+            const map = {
+                'print': 'business_cards',
+                'apparel': 'tshirts',
+                'signage': 'banners',
+                'gifts': 'mugs'
+            };
+            if (map[serviceType]) {
+                document.getElementById('calcCategory').value = map[serviceType];
+                updateCalcOptions();
+            }
+        }
+
+        // Modal Functions
+        function openOrderModal() {
+            const catText = document.getElementById('calcCategory').options[document.getElementById('calcCategory').selectedIndex].text;
+            const qtyText = document.getElementById('calcQtyDisplay').textContent;
+            const matText = document.getElementById('calcMaterial').options[document.getElementById('calcMaterial').selectedIndex].text;
+            const priceText = document.getElementById('calcTotalPrice').textContent;
+
+            document.getElementById('modalProduct').textContent = catText;
+            document.getElementById('modalQty').textContent = qtyText;
+            document.getElementById('modalMaterial').textContent = matText;
+            document.getElementById('modalPrice').textContent = priceText;
+
+            document.getElementById('orderModal').classList.remove('hidden');
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').classList.add('hidden');
+        }
+
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            closeOrderModal();
+            showToast('Order request received! Our team will contact you on WhatsApp.');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('contactForm').reset();
+            showToast('Message sent! We will reach out shortly.');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = message;
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 4000);
+        }
+
+        // Portfolio Filter Tabs
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const btns = document.querySelectorAll('.port-filter-btn');
+
+            btns.forEach(btn => {
+                btn.classList.remove('bg-brand-800', 'text-white', 'shadow-md');
+                btn.classList.add('bg-white', 'text-slate-600');
+            });
+
+            event.target.classList.remove('bg-white', 'text-slate-600');
+            event.target.classList.add('bg-brand-800', 'text-white', 'shadow-md');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Initialize Calculator Default State
+        updateCalcOptions();
+    </script>
+</body>
+</html>
